@@ -1,23 +1,44 @@
-import logo from './logo.svg';
+import {useState} from "react";
 import './App.css';
+import BoxGenerator from "./components/BoxGenerator";
+import Form from "./components/Form";
 
 function App() {
+  const [boxes, setBoxes] = useState([
+    {
+      color: "red"
+    },
+    {
+      color: "blue"
+    },
+    {
+      color: "purple"
+    }
+  ]);
+
+
+  const addBox = (inputForm) => {
+    const newBox={
+      color:inputForm
+    }
+
+    setBoxes([...boxes, newBox])
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>BoxGenerator</h1>
+
+      <Form addBox={addBox}/>
+
+
+      {
+        boxes.map((box,i) => {
+          return (
+            <BoxGenerator key={i} box={box}/>
+          )
+        })
+      }
     </div>
   );
 }
