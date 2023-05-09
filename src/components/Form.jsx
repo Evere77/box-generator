@@ -6,6 +6,7 @@ const Form = (props) => {
   const formSubmit = (e) => {
     e.preventDefault()
     props.addBox(input)
+    setInput("")
   }
 
   return (
