@@ -1,4 +1,3 @@
-
 const BoxGenerator = (props) => {
   return (
     <div style={{backgroundColor: props.box.color,
